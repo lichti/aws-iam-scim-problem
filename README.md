@@ -68,13 +68,12 @@ updateGroup1(getGroupIBByName('GROUP1'),"replace",[])
 ```
 **Response**
 
-    Updating 2408a4d8-b041-7060-a8c0-837ef3bb0c21
-    {"schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"], "Operations": [{"op": "replace", "path": "members", "value": []}]}
-    <Response [204]>
-    b''
-    True
-
-
+```json
+Updating 2408a4d8-b041-7060-a8c0-837ef3bb0c21
+{"schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"], "Operations": [{"op": "replace", "path": "members"}]}
+<Response [204]>
+b''
+```
 
 **See, the group still contains the users.**
 
@@ -143,6 +142,13 @@ def updateGroup2(group_id=None, operation=None, members=[]):
 updateGroup2(getGroupIBByName('GROUP1'),"replace",[])
 ```
 
+```json
+Updating 2408a4d8-b041-7060-a8c0-837ef3bb0c21
+{"schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"], "Operations": [{"op": "replace", "path": "members"}]}
+<Response [204]>
+b''
+```
+
 **See, the same result, group still contains the users.**
 
 ![](img/poc01.png)
@@ -203,13 +209,12 @@ updateGroup3(getGroupIBByName('GROUP1'),"replace",[])
 
 **Response**
 
-    Updating 2408a4d8-b041-7060-a8c0-837ef3bb0c21
-    {"schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"], "Operations": [{"op": "replace", "path": "members", "value": [{"value": ""}]}]}
-    <Response [400]>
-    b'{"schema":["urn:ietf:params:scim:api:messages:2.0:Error"],"schemas":["urn:ietf:params:scim:api:messages:2.0:Error"],"detail":"Request is unparsable, syntactically incorrect, or violates schema.","status":"400","exceptionRequestId":"59370c32-f096-4892-8e37-94b4581f1f03","timeStamp":"2024-04-05 06:32:12.227"}'
-    False
-
-
+```json
+Updating 2408a4d8-b041-7060-a8c0-837ef3bb0c21
+{"schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"], "Operations": [{"op": "replace", "path": "members", "value": [{"value": ""}]}]}
+<Response [400]>
+b'{"schema":["urn:ietf:params:scim:api:messages:2.0:Error"],"schemas":["urn:ietf:params:scim:api:messages:2.0:Error"],"detail":"Request is unparsable, syntactically incorrect, or violates schema.","status":"400","exceptionRequestId":"59370c32-f096-4892-8e37-94b4581f1f03","timeStamp":"2024-04-05 06:32:12.227"}'
+```
 
 **See now, although an error was returned, the group is empty.**
 
